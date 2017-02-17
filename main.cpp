@@ -9,6 +9,7 @@
 
 #include "Dynamic9.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 /******************************************************************************
@@ -30,12 +31,17 @@ using namespace std;
  *    array2 - Object holding a pointer to a dynamic array and its size - copied
  *    		   from array1 using deep copy function.
  *****************************************************************************/
+
+void PrintHeader(string labName, char labType, int labNum);
+
 int main()
 {
 	const int SIZE = 10;
 
 	DynArray array1(SIZE); // Dynamic Array object.
 	DynArray array2(SIZE); // Dynamic Array object.
+
+	PrintHeader("Dynamic 9", 'E', 1);
 
 	// Initializes the elements of the first dynamic array by passing in the
 	// current index as the index and value to be stored.
@@ -70,4 +76,40 @@ int main()
 	array2.ValueAt(11);
 
 	return 0;
+}
+
+/******************************************************************************
+ * PrintHeader
+ * ----------------------------------------------------------------------------
+ * This function prints the project header.
+ * ----------------------------------------------------------------------------
+ * PRE-CONDITIONS:
+ *     labName - Lab Name has to be preciously defined
+ *     labType -  Lab Type has to be preciously defined
+ *     labNum  - Lab Number has to be preciously defined
+ *
+ * POST-CONDITIONS:
+ *     This function will print the class heading.
+ *****************************************************************************/
+void PrintHeader(string labName, char labType, int labNum)
+{
+	cout << left;
+	cout << "************************************************\n";
+	cout << "* PROGRAMMED BY   : Jesus Sanchez";
+	cout << "\n* " << setw(16) << "STUDENT ID" << ": 1024834" ;
+	cout << "\n* " << setw(16) << "CLASS" << ": MW: 1:30pm - 2:50pm";
+	cout << "\n* ";
+
+	if(toupper(labType) == 'E')
+	{
+		cout << "EXTRA CREDIT #" << setw(1);
+	}
+	else
+	{
+		cout << "ASSIGNMENT #" << setw(2);
+	}
+
+	cout << labNum << " : " << labName;
+	cout << "\n************************************************\n\n";
+	cout << right;
 }
